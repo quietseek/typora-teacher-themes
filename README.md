@@ -12,7 +12,7 @@
 4. 在「主题」菜单选择「雾蓝备课」「葡萄紫讲义」「石墨作业」等主题。
 5. 打开 `templates/` 中的模板，另存为自己的文档后编辑。
 
-下载后双击根目录的 `index.html`，即可离线切换配色和版式。在线预览通过 GitHub Pages 部署；部署状态及地址见仓库的 **Settings → Pages**。
+[在线预览](https://quietseek.github.io/typora-teacher-themes/)可直接切换五种配色和三种版式。下载后双击根目录的 `index.html`，也可离线使用。
 
 完整安装及排版写法见 [使用说明](docs/USAGE.md)，打印效果见 [两页作业 PDF](docs/samples/worksheet.pdf)。
 
@@ -72,7 +72,9 @@ Windows 安装 Poppler 并将其 `bin` 加入 PATH；Ubuntu 可用 `sudo apt-get
 
 ## GitHub Pages
 
-在 **Settings → Pages → Source** 中选择 **GitHub Actions**。仓库有权限启用 Pages 后，将仓库变量 `PAGES_ENABLED` 设为 `true`；推送 `main` 或手动运行 CI 工作流，即可测试并部署预览。
+本仓库已启用 GitHub Pages，推送 `main` 并通过 CI 后会自动更新[在线预览](https://quietseek.github.io/typora-teacher-themes/)。
+
+如果 fork 本项目，在 **Settings → Pages → Source** 中选择 **GitHub Actions**，并将仓库变量 `PAGES_ENABLED` 设为 `true`。然后推送 `main` 或手动运行 CI 工作流，即可测试并部署自己的预览站点。
 
 私有仓库能否启用 Pages 取决于 GitHub 账号方案。普通 Pages 网站通常可以被公开访问，即使源仓库是私有的。部署产物只包含预览页与主题 CSS，不包含独立教师答案或开发文件；预览页内的示例内容会对访问者可见。
 
