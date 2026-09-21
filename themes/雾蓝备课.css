@@ -1,0 +1,140 @@
+/* 教师工作纸 · 多配色 v1.1 | MIT License
+ * 独立主题，无网络字体、图片或脚本依赖。
+ * 自定义：优先修改下方 :root 中的 qm 变量。
+ */
+:root {
+  --qm-paper: #ffffff;
+  --qm-canvas: #f5f7f6;
+  --qm-ink: #263c3a;
+  --qm-muted: #586c67;
+  --qm-accent: #24736b;
+  --qm-tint: #edf5f2;
+  --qm-rule: #cddad6;
+  --qm-body: "Microsoft YaHei", "PingFang SC", "Noto Sans CJK SC", sans-serif;
+  --qm-heading: "Microsoft YaHei UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+  --qm-mono: Consolas, "SFMono-Regular", monospace;
+  --qm-size: 16px;
+  --qm-leading: 1.85;
+  --qm-paragraph: .75em;
+  --qm-section: 1.8em;
+  --qm-width: 880px;
+  --qm-print-size: 10.5pt;
+  --qm-print-leading: 1.65;
+  --bg-color: var(--qm-paper);
+  --text-color: var(--qm-ink);
+  --primary-color: var(--qm-accent);
+  --side-bar-bg-color: var(--qm-canvas);
+  --control-text-color: var(--qm-muted);
+  --active-file-bg-color: var(--qm-tint);
+  --active-file-text-color: var(--qm-accent);
+  --active-file-border-color: var(--qm-accent);
+  --item-hover-bg-color: var(--qm-tint);
+  --item-hover-text-color: var(--qm-ink);
+  --select-text-bg-color: var(--qm-selection, #cde7dd);
+  --select-text-font-color: var(--qm-ink);
+  --window-border: 1px solid var(--qm-rule);
+  --monospace: var(--qm-mono);
+}
+:root { --qm-size: 16px; --qm-leading: 1.85; --qm-section: 1.8em; }
+:root { --qm-accent: #355f99; --qm-ink: #283548; --qm-muted: #5b687b; --qm-tint: #edf3fb; --qm-rule: #ccd9ea; --qm-canvas: #f4f7fb; --qm-selection: #d5e2f4; }
+html { font-size: var(--qm-size); -webkit-font-smoothing: antialiased; }
+body { font-family: var(--qm-body); color: var(--qm-ink); background: var(--qm-paper); line-height: var(--qm-leading); }
+#write { box-sizing: border-box; max-width: var(--qm-width); margin: 0 auto; padding: 48px 54px 100px; font-size: var(--qm-size); line-height: var(--qm-leading); overflow-wrap: break-word; }
+#write p { margin: var(--qm-paragraph) 0; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6 { font-family: var(--qm-heading); font-weight: 700; line-height: 1.45; color: var(--qm-ink); break-after: avoid; page-break-after: avoid; }
+#write h1 { font-size: 1.85em; letter-spacing: .035em; margin: .35em 0 .7em; padding: 0 0 .6em; border-bottom: 2px solid var(--qm-accent); }
+#write h2 { font-size: 1.2em; margin: var(--qm-section) 0 .7em; padding: .05em 0 .05em .7em; border-left: 4px solid var(--qm-accent); }
+#write h3 { font-size: 1.05em; margin: 1.35em 0 .45em; }
+#write h4, #write h5, #write h6 { font-size: 1em; margin: 1.1em 0 .4em; }
+#write h5, #write h6 { color: var(--qm-muted); }
+#write strong { font-weight: 700; color: var(--qm-ink); }
+#write a { color: var(--qm-accent); text-decoration: underline; text-underline-offset: 3px; }
+#write a:focus-visible { outline: 2px solid var(--qm-accent); outline-offset: 3px; }
+#write mark { background: #f3edce; color: var(--qm-ink); padding: .05em .18em; }
+#write hr { height: 0; border: 0; border-top: 1px solid var(--qm-rule); margin: 1.6em 0; }
+#write ul, #write ol { margin: .6em 0; padding-left: 1.65em; }
+#write li { margin: .3em 0; padding-left: .12em; }
+#write li > p { margin: .25em 0; }
+#write li > ul, #write li > ol { margin: .25em 0; }
+#write li::marker { color: var(--qm-accent); font-weight: 600; }
+#write .md-task-list-item > input { accent-color: var(--qm-accent); }
+#write blockquote { margin: 1em 0; padding: .65em 1em; color: var(--qm-ink); background: var(--qm-tint); border: 0; border-left: 3px solid var(--qm-accent); }
+#write blockquote > :first-child { margin-top: 0; }
+#write blockquote > :last-child { margin-bottom: 0; }
+#write table { width: 100%; border-collapse: collapse; border-spacing: 0; margin: 1em 0; font-size: .93em; line-height: 1.65; }
+#write th, #write td { padding: .6em .8em; border: 1px solid var(--qm-rule); vertical-align: top; overflow-wrap: break-word; }
+#write th { background: var(--qm-tint); color: var(--qm-ink); font-family: var(--qm-heading); font-weight: 700; text-align: left; }
+#write tbody tr:nth-child(even) { background: var(--qm-canvas); }
+#write code, #write .md-fences, #write pre { font-family: var(--qm-mono); font-size: .9em; }
+#write code { padding: .12em .3em; background: var(--qm-tint); border-radius: 3px; color: var(--qm-accent); }
+#write pre, #write .md-fences { margin: 1em 0; padding: 1em; background: var(--qm-canvas); border: 1px solid var(--qm-rule); border-radius: 4px; line-height: 1.6; }
+#write pre code { padding: 0; background: none; color: inherit; font-size: 1em; }
+#write img, #write video, #write svg { max-width: 100%; }
+#write img { height: auto; }
+#write figure { margin: 1.2em 0; text-align: center; }
+#write figcaption { margin-top: .5em; font-size: .85em; color: var(--qm-muted); }
+#write .md-math-block { padding: .5em 0; overflow-x: auto; }
+#write .md-toc { padding: .9em 1.2em; background: var(--qm-canvas); border: 1px solid var(--qm-rule); }
+#write .md-toc-content { margin: 0; }
+#write .footnotes { font-size: .85em; color: var(--qm-muted); border-top: 1px solid var(--qm-rule); margin-top: 2em; }
+#write .md-meta-block { font-family: var(--qm-mono); font-size: .85em; color: var(--qm-muted); background: var(--qm-canvas); padding: 1em; }
+#write .md-comment { color: var(--qm-muted); }
+/* 可选的教学组件。在 Markdown 中直接插入 HTML 即可。 */
+#write .qm-kicker { color: var(--qm-accent); font-family: var(--qm-heading); font-size: .8em; font-weight: 700; letter-spacing: .14em; margin: 0 0 .7em; }
+#write .qm-meta { display: flex; flex-wrap: wrap; gap: .5em 1.6em; margin: .8em 0 1.5em; padding: .6em 0; border-bottom: 1px solid var(--qm-rule); color: var(--qm-muted); font-family: var(--qm-heading); font-size: .83em; }
+#write .qm-note { padding: .8em 1em; margin: 1em 0; background: var(--qm-tint); border-left: 3px solid var(--qm-accent); }
+#write .qm-answer { --qm-answer-height: 30mm; min-height: var(--qm-answer-height); box-sizing: border-box; margin: .4em 0 1em; border: 1px solid var(--qm-rule); border-radius: 2px; }
+#write .qm-answer.small { --qm-answer-height: 18mm; }
+#write .qm-answer.large { --qm-answer-height: 48mm; }
+#write .qm-lines { margin: .4em 0 1em; }
+#write .qm-lines > div { height: 9mm; border-bottom: 1px solid var(--qm-rule); }
+#write .qm-blank { display: inline-block; min-width: 3.5em; height: 1em; margin: 0 .15em; border-bottom: 1px solid currentColor; vertical-align: baseline; }
+#write table.qm-planning { table-layout: fixed; }
+#write table.qm-planning th:first-child { width: 32%; }
+#write table.qm-planning td { height: 12mm; }
+#write .qm-question { break-inside: avoid; page-break-inside: avoid; }
+#write .qm-page-break { height: 0; border-top: 1px dashed var(--qm-rule); margin: 2em 0; position: relative; }
+@media screen {
+  #write .qm-page-break::after { content: "打印分页"; position: absolute; top: -.85em; right: 0; padding-left: .8em; background: var(--qm-paper); color: var(--qm-muted); font-family: var(--qm-heading); font-size: 11px; }
+}
+/* Typora 的侧栏与编辑控件：沿用应用布局，只调整配色与字形。 */
+#typora-sidebar { font-family: var(--qm-heading); color: var(--qm-muted); }
+.sidebar-tabs { border-bottom: 1px solid var(--qm-rule); }
+.sidebar-tab.active, .outline-active { color: var(--qm-accent); }
+.file-list-item.active { border-left-color: var(--qm-accent); }
+.cm-s-inner .cm-header, .cm-s-inner .cm-link { color: var(--qm-accent); }
+.cm-s-inner .cm-comment { color: var(--qm-muted); }
+#typora-source .CodeMirror-lines { max-width: var(--qm-width); margin: 0 auto; }
+@media screen and (max-width: 640px) {
+  #write { padding: 24px 20px 64px; }
+  #write h1 { font-size: 1.6em; }
+  #write th, #write td { padding: .45em; }
+  #write .qm-meta { gap: .4em 1em; }
+}
+/* A4：导出对话框的纸型、边距设置也会影响最终结果。 */
+@page { size: A4; margin: 17mm 17mm 18mm; }
+@media print {
+  :root { --qm-ink: #111111; --qm-muted: #333333; --qm-accent: #222222; --qm-rule: #9c9c9c; --qm-tint: #ffffff; }
+  html, body { background: #fff !important; color: #111 !important; font-size: var(--qm-print-size); }
+  #write { width: auto; max-width: none; margin: 0; padding: 0 !important; font-family: "SimSun", "Songti SC", "Noto Serif CJK SC", serif; font-size: var(--qm-print-size); line-height: var(--qm-print-leading); }
+  #write h1 { font-size: 19pt; margin-top: 0; padding-bottom: .45em; }
+  #write h2 { font-size: 12.5pt; margin-top: 1.2em; border-left-width: 2pt; }
+  #write h3 { font-size: 11pt; }
+  #write p, #write li { orphans: 2; widows: 2; }
+  #write a { color: #111; text-decoration: underline; }
+  #write blockquote, #write .qm-note { border: 1px solid #aaa; border-left: 2pt solid #444; background: #fff !important; }
+  /* Chromium can clip a collapsed border exactly at the printable area's edge.
+     Reserve two CSS pixels so the full right stroke stays inside that area. */
+  #write table { box-sizing: border-box; width: calc(100% - 2px); max-width: calc(100% - 2px); font-size: .92em; }
+  #write table thead { display: table-header-group; }
+  #write table tr { break-inside: avoid; page-break-inside: avoid; }
+  #write th, #write td { padding: .45em .55em; background: #fff !important; }
+  #write img, #write figure, #write .md-math-block, #write .qm-meta, #write .qm-answer, #write .qm-lines { break-inside: avoid; page-break-inside: avoid; }
+  #write .qm-answer, #write .qm-lines > div { border-color: #888; }
+  #write .qm-meta { color: #333; margin-bottom: 1em; }
+  #write pre, #write .md-fences { background: #fff; border-color: #aaa; white-space: pre-wrap; overflow-wrap: anywhere; }
+  #write code, #write mark { background: #fff; color: #111; }
+  #write mark { text-decoration: underline; }
+  #write .qm-page-break { display: block; break-before: page; page-break-before: always; margin: 0; padding: 0; border: 0; height: 0; }
+  #write .qm-page-break::after { content: none; }
+}

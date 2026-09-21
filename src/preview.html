@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>教师工作纸 · 五种配色</title>
+<link id="theme" rel="stylesheet" href="themes/雾蓝备课.css">
+<style>
+body{margin:0;background:var(--qm-canvas)}
+.preview-bar{position:sticky;top:0;z-index:10;background:#fff;border-bottom:1px solid var(--qm-rule);padding:18px 32px;font-family:"Microsoft YaHei",sans-serif}
+.toolbar{display:flex;align-items:center;justify-content:space-between;gap:18px;max-width:1200px;margin:auto}
+.brand{display:flex;align-items:baseline;gap:14px}.brand b{font-size:21px;letter-spacing:2px;color:var(--qm-ink)}.brand span{font-size:12px;color:var(--qm-muted)}
+.controls,.palettes{display:flex;align-items:center;flex-wrap:wrap;gap:7px}
+.palettes{max-width:1200px;margin:15px auto 0;padding-top:14px;border-top:1px solid var(--qm-rule)}
+.palette-label{font-size:12px;color:var(--qm-muted);margin-right:8px}
+button{font:inherit;font-size:13px;border:1px solid var(--qm-rule);color:var(--qm-ink);background:white;padding:8px 15px;cursor:pointer;border-radius:4px}
+.controls button[aria-pressed=true]{background:var(--qm-accent);color:#fff;border-color:var(--qm-accent)}
+.palettes button{display:flex;align-items:center;gap:7px}
+.palettes button[aria-pressed=true]{border-color:var(--qm-accent);background:var(--qm-tint);box-shadow:inset 0 0 0 1px var(--qm-accent)}
+.swatch{display:inline-block;width:12px;height:12px;border-radius:50%;background:var(--swatch)}
+button:focus-visible{outline:2px solid var(--qm-accent);outline-offset:3px}
+.preview-hint{max-width:880px;margin:24px auto 14px;padding:0 16px;box-sizing:border-box;font:12px/1.7 "Microsoft YaHei",sans-serif;color:var(--qm-muted)}
+#write{background:#fff;margin-bottom:36px;border:1px solid var(--qm-rule);box-shadow:0 5px 22px #263c3a07}
+.preview-footer{text-align:center;font:12px/1.8 "Microsoft YaHei",sans-serif;color:var(--qm-muted);padding:0 20px 30px}
+@media(max-width:760px){.preview-bar{position:static;padding:16px}.toolbar{align-items:flex-start;flex-direction:column;gap:12px}.brand span{font-size:11px}.palettes{gap:6px}.palette-label{width:100%}.palettes button{padding:7px 11px}.preview-hint{margin-top:16px}#write{border-left:0;border-right:0}}
+@media print{.preview-bar,.preview-hint,.preview-footer{display:none!important}body{background:#fff}#write{border:0;box-shadow:none;margin:0}}
+</style>
+</head>
+<body>
+<header class="preview-bar">
+  <div class="toolbar"><div class="brand"><b>教师工作纸</b><span>高中化学示例 / TYPORA 主题</span></div>
+  <nav class="controls" aria-label="文档类型"><button type="button" data-index="0" aria-pressed="true">备课</button><button type="button" data-index="1" aria-pressed="false">讲义</button><button type="button" data-index="2" aria-pressed="false">作业</button><button type="button" id="print">打印当前示例</button></nav></div>
+  <nav class="palettes" aria-label="主题配色"><span class="palette-label">选择配色</span>__PALETTE_BUTTONS__</nav>
+</header>
+<div class="preview-hint" id="hint" aria-live="polite"></div><main id="write"></main>
+<footer class="preview-footer">五种配色 × 三种版式 · 离线可用<br>此页用于比较排版；请在 Typora 中打开配套 Markdown 文件编辑。打印统一为黑白样式。</footer>
+<script>
+const pages=__PAGES__;
+const palettes=__PALETTES__;
+const modes=['备课','讲义','作业'];
+let currentMode=0,currentPalette=0;
+function select(mode=currentMode,palette=currentPalette){
+  currentMode=mode;currentPalette=palette;
+  document.getElementById('theme').href='themes/'+palettes[palette].name+modes[mode]+'.css';
+  document.getElementById('write').innerHTML=pages[mode];
+  document.getElementById('hint').textContent=palettes[palette].name+' · '+modes[mode]+'版 — '+palettes[palette].description;
+  document.querySelectorAll('[data-index]').forEach(b=>b.setAttribute('aria-pressed',String(Number(b.dataset.index)===mode)));
+  document.querySelectorAll('[data-palette]').forEach(b=>b.setAttribute('aria-pressed',String(Number(b.dataset.palette)===palette)));
+}
+document.querySelectorAll('[data-index]').forEach(b=>b.addEventListener('click',()=>select(Number(b.dataset.index))));
+document.querySelectorAll('[data-palette]').forEach(b=>b.addEventListener('click',()=>select(currentMode,Number(b.dataset.palette))));
+document.getElementById('print').addEventListener('click',()=>window.print());select();
+</script>
+</body></html>

@@ -1,0 +1,58 @@
+name: Build, test and deploy preview
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+      - run: python -m pip install -r requirements-dev.txt
+      - run: python -m playwright install --with-deps chromium
+      - run: sudo apt-get update && sudo apt-get install -y poppler-utils fonts-noto-cjk
+      - run: python scripts/build.py --check
+      - run: python scripts/verify.py
+      - run: python scripts/package.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: typora-teacher-themes
+          path: dist/typora-teacher-themes.zip
+      - uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: verification-diagnostics
+          path: artifacts/
+          if-no-files-found: ignore
+      - uses: actions/upload-pages-artifact@v3
+        if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main' && vars.PAGES_ENABLED == 'true'
+        with:
+          path: dist/site
+
+  deploy:
+    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main' && vars.PAGES_ENABLED == 'true'
+    needs: verify
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    concurrency:
+      group: pages
+      cancel-in-progress: false
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy preview
+        id: deployment
+        uses: actions/deploy-pages@v4

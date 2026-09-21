@@ -1,0 +1,4 @@
+-r requirements.txt
+playwright==1.62.0
+Pillow==12.3.0
+tinycss2==1.4.0
